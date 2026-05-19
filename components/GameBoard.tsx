@@ -308,6 +308,11 @@ export default function GameBoard() {
         isOpen={showHistory}
         onClose={() => setShowHistory(false)}
       />
+
+      {/* Footer */}
+      <footer className="text-center py-4 text-xs text-gray-300">
+        Made with ❤️ by Royce | Contact Email: 203906526@qq.com
+      </footer>
     </div>
   );
 }
