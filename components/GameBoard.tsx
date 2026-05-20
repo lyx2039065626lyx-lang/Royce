@@ -195,7 +195,8 @@ export default function GameBoard() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col">
-      {/* Header */}
+      {/* Header — hidden on start screen */}
+      {gameState !== "idle" && (
       <header className="border-b border-gray-200 px-8 py-5 flex items-center justify-between">
         <h1 className="text-xl font-black tracking-tight text-black">
           AI PICTIONARY
@@ -207,7 +208,7 @@ export default function GameBoard() {
           >
             History
           </button>
-          {gameState !== "idle" && gameState !== "gameOver" && (
+          {gameState !== "gameOver" && (
             <button
               onClick={handlePlayAgain}
               className="text-sm font-medium text-gray-400 hover:text-black transition-colors"
@@ -217,6 +218,7 @@ export default function GameBoard() {
           )}
         </div>
       </header>
+      )}
 
       {/* Main content — hidden on start screen */}
       {gameState !== "idle" && (
@@ -312,10 +314,12 @@ export default function GameBoard() {
         onClose={() => setShowHistory(false)}
       />
 
-      {/* Footer */}
+      {/* Footer — hidden on start screen */}
+      {gameState !== "idle" && (
       <footer className="text-center py-4 text-xs text-gray-300">
         Made with ❤️ by Royce | Contact Email: 203906526@qq.com
       </footer>
+      )}
     </div>
   );
 }
