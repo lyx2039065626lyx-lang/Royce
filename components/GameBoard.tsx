@@ -138,6 +138,7 @@ export default function GameBoard() {
 
       lastGuessRef.current = { guess: data.guess, correct, score };
       finishRound(result);
+      canvas.clearCanvas();
     } catch {
       const result: RoundResult = {
         roundNumber: currentRound,
@@ -217,7 +218,8 @@ export default function GameBoard() {
         </div>
       </header>
 
-      {/* Main content */}
+      {/* Main content — hidden on start screen */}
+      {gameState !== "idle" && (
       <main className="flex-1 flex flex-col lg:flex-row gap-8 p-8 lg:p-12 max-w-7xl mx-auto w-full">
         {/* Canvas area */}
         <div className="flex-1 flex flex-col gap-6">
@@ -291,6 +293,7 @@ export default function GameBoard() {
           />
         </div>
       </main>
+      )}
 
       {/* Overlays */}
       {gameState === "idle" && (
